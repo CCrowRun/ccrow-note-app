@@ -4,6 +4,7 @@ import './App.css';
 import Nav from './components/Nav.js';
 import List from './components/List.js';
 import Note from './components/Note.js';
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -19,13 +20,19 @@ class App extends Component {
     });
   }
 
+  getNotes = () => {
+    axios.get('https://note-api-ccrow.herokuapp.com/notes')
+    .then((res) => console.log(res.data) )
+    .catch((err) => console.log(err.response.data) );
+  }
+
   render() {
     const { showNote } = this.state;
 
     return (
       <div className="App">
         <Nav toggleNote={this.toggleNote} showNote={showNote} />
-        { showNote ? <Note /> : <List /> }
+        { showNote ? <Note /> : <List getNotes={this.getNotes} /> }
       </div>
     );
   }
