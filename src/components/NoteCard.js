@@ -12,6 +12,12 @@ class NoteCard extends React.Component {
 				<div className="note-card-content">
 					{note.content}
 				</div>
+				<span className="note-card-delete">
+					<i className="material-icons">close</i>
+				</span>
+				<span className="note-card-edit">
+					<i className="material-icons">mode_edit</i>
+				</span>
 			</div>
 		);
 	}
