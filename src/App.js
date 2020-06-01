@@ -12,7 +12,8 @@ class App extends Component {
     super();
     this.state = {
       showNote: false,
-      notes: []
+      notes: [],
+      note: {}
     };
   }
 
@@ -28,8 +29,8 @@ class App extends Component {
     .catch((err) => console.log(err.response.data) );
   }
 
-  getNote = () => {
-    console.log('Clicked!');
+  getNote = (id) => {
+    console.log('Clicked!' + id);
   }
 
   render() {
