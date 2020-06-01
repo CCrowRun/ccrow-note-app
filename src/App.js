@@ -30,7 +30,9 @@ class App extends Component {
   }
 
   getNote = (id) => {
-    console.log('Clicked!' + id);
+    axios.get(urlFor(`notes/${id}`))
+    .then((res) => this.setState({ note: res.data, showNote: true }) )
+    .catch((err) => console.log(err.response.data) );
   }
 
   render() {
