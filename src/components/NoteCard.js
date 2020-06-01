@@ -3,7 +3,7 @@ import React from 'react';
 class NoteCard extends React.Component {
 	render() {
 		return(
-			<div class="note-card-container">
+			<div className="note-card-container">
 				NoteCard Component
 			</div>
 		);
