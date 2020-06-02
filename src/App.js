@@ -71,7 +71,8 @@ class App extends Component {
           <List 
             getNotes={this.getNotes}  
             notes={notes} 
-            getNote={this.getNote}
+            getNote={this.getNote} 
+            deleteNote={this.deleteNote} 
           /> 
         }
       </div>
