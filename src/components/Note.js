@@ -3,8 +3,11 @@ import React from 'react';
 class Note extends React.Component {
 	onSubmit(e) {
 		e.preventDefault();
-		const title = this.title.value;
-		console.log(title);
+		const formData = {
+			title: this.title.value,
+			content: this.content.value
+		};
+		console.log(formData);
 	}
 
 	render() {
@@ -24,6 +27,7 @@ class Note extends React.Component {
 						className="note-textarea" 
 						placeholder="Type here..." 
 						defaultValue={note.content} 
+						ref={(input) => this.content = input}
 					/>
 					<input className="note-button" type="submit" value="Submit" />
 				</form>
