@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Nav from './components/Nav.js';
 import List from './components/List.js';
@@ -12,13 +11,15 @@ class App extends Component {
     super();
     this.state = {
       showNote: false,
-      notes: []
+      notes: [],
+      note: {}
     };
   }
 
   toggleNote = () => {
     this.setState({
-      showNote: ! this.state.showNote
+      showNote: ! this.state.showNote,
+      note: {}
     });
   }
 
@@ -28,18 +29,50 @@ class App extends Component {
     .catch((err) => console.log(err.response.data) );
   }
 
+  getNote = (id) => {
+    axios.get(urlFor(`notes/${id}`))
+    .then((res) => this.setState({ note: res.data, showNote: true }) )
+    .catch((err) => console.log(err.response.data) );
+  }
+
+  performSubmissionRequest = (data, id) => {
+    if (id) {
+      return axios.patch(urlFor(`notes/${id}`), data);
+    } else {
+      return axios.post(urlFor('notes'), data);
+    }
+  }
+
+  submitNote = (data, id) => {
+    this.performSubmissionRequest(data, id)
+      .then((res) => this.setState({ showNote: false }) )
+      .catch((err) => console.log(err.response.data) );
+  }
+
+  deleteNote = (id) => {
+    const newNotesState = this.state.notes.filter((note) => note.id !== id );
+    axios.delete(urlFor(`/notes/${id}`))
+      .then((res) => this.setState({ notes: newNotesState }) )
+      .catch((err) => console.log(err.response.data) );
+  }
+
   render() {
-    const { showNote, notes } = this.state;
+    const { showNote, notes, note } = this.state;
 
     return (
       <div className="App">
         <Nav toggleNote={this.toggleNote} showNote={showNote} />
         { showNote ? 
-          <Note /> 
+          <Note 
+            note={note} 
+            submitNote={this.submitNote} 
+          /> 
           : 
           <List 
             getNotes={this.getNotes}  
             notes={notes} 
+            getNote={this.getNote} 
+            deleteNote={this.deleteNote} 
           /> 
         }
       </div>
