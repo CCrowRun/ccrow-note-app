@@ -5,6 +5,7 @@ import List from './components/List.js';
 import Note from './components/Note.js';
 import axios from 'axios';
 import urlFor from './helpers/urlFor.js';
+import Flash from './components/Flash.js';
 
 class App extends Component {
   constructor() {
@@ -83,6 +84,7 @@ class App extends Component {
     return (
       <div className="App">
         <Nav toggleNote={this.toggleNote} showNote={showNote} />
+        <Flash />
         { showNote ? 
           <Note 
             note={note} 
