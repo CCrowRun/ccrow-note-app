@@ -76,8 +76,13 @@ class App extends Component {
 
   submitTag = (data, noteId) => {
     axios.post(urlFor(`notes/${noteId}/tags`), data)
-      .then((res) => this.getNote(noteId) )
-      .catch((err) => console.log(err.response.data) );
+    .then((res) => this.getNote(noteId) )
+    .catch((err) => {
+      const { errors } = err.response.data;
+      if (errors.name) {
+        this.setState({ error: "Missing Tag Name!" });
+      }
+    });
   }
 
   deleteTag = (noteId, id) => {
@@ -86,13 +91,17 @@ class App extends Component {
       .catch((err) => console.log(err.response.data) );
   }
 
+  resetError = () => {
+    this.setState({ error: '' });
+  }
+
   render() {
     const { showNote, notes, note, newTag, error } = this.state;
 
     return (
       <div className="App">
         <Nav toggleNote={this.toggleNote} showNote={showNote} />
-        {error && <Flash error={error} />}
+        {error && <Flash error={error} resetError={this.resetError} />}
         { showNote ? 
           <Note 
             note={note} 
