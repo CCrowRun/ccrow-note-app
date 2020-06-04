@@ -14,7 +14,8 @@ class App extends Component {
       showNote: false,
       notes: [],
       note: {},
-      newTag: false
+      newTag: false,
+      error: ''
     };
   }
 
@@ -47,8 +48,15 @@ class App extends Component {
 
   submitNote = (data, id) => {
     this.performSubmissionRequest(data, id)
-      .then((res) => this.setState({ showNote: false }) )
-      .catch((err) => console.log(err.response.data) );
+    .then((res) => this.setState({ showNote: false }) )
+    .catch((err) => {
+      const { errors } = err.response.data;
+      if (errors.content) {
+        this.setState({ error: "Missing Note Content!" });
+      } else if (errors.title) {
+        this.setState({ error: "Missing Note Title!" });
+      }
+    });
   }
 
   deleteNote = (id) => {
@@ -79,12 +87,12 @@ class App extends Component {
   }
 
   render() {
-    const { showNote, notes, note, newTag } = this.state;
+    const { showNote, notes, note, newTag, error } = this.state;
 
     return (
       <div className="App">
         <Nav toggleNote={this.toggleNote} showNote={showNote} />
-        <Flash />
+        {error && <Flash error={error} />}
         { showNote ? 
           <Note 
             note={note} 
