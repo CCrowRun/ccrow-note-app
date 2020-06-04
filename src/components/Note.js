@@ -12,7 +12,10 @@ class Note extends React.Component {
 
 	onTagSubmit(e) {
 		e.preventDefault();
-		console.log(this.name.value);
+		const formData = {
+			name: this.name.value
+		};
+		this.props.submitTag(formData, this.props.note.id);
 		this.props.closeTagForm();
 	}
 
