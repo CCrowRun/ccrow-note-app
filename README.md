@@ -1,68 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Notes
 
-## Available Scripts
+Notes is a single page application designed using ReactJS and integrating with a Ruby on Rails back-end API in order to manage a user's notes on a single page.
 
-In the project directory, you can run:
+This application was created as part of the University of Wisconsin Extension Bootcamp. The application up and running.
 
-### `yarn start`
+## User Stories
+As user, I want to:
+* See a list of all notes I have created, so that I may decide which to do next.
+* Delete notes that are no longer needed, so that I can reduce noise.
+* Add new notes to the list, so I can keep it up-to-date.
+* Tag notes, so that I can organize them.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to run the application:
+Under Construction
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Production
+Navigate to the production location of [Notes](https://note-app-ccrow.herokuapp.com/)
+1. From the home page, you are presented with all existing notes.
+2. To add a note, click the "+ Note" icon on the bottom of the screen. Fill in a title and content, then save.
+3. To edit a note, click the "Edit" pencil icon and make desired changes.
+4. To tag a note, from the edit screen click on the tags section, type the tag, and press "Enter."
+5. To delete a note, click the "Delete" icon.
 
-### `yarn test`
+## High Level Organization
+Notes is a ReactJS application, integrating with a Ruby on Rails back-end API.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Application Specs
+ReactJS v. 16.13.1
